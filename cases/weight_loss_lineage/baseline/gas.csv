@@ -1,0 +1,3 @@
+time,gas,action,flow,note
+0.0 min,N2,open,50 sccm,start nitrogen
+9.0 min,air,switch,50 sccm,valve switch to air

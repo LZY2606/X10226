@@ -1,0 +1,4 @@
+time,temperature,mass
+0.0 min,30 C,10.500 mg
+1.0 min,not-a-temp,10.490 mg
+2.0 min,65 C,10.460 mg

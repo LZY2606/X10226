@@ -1,0 +1,4 @@
+time,offset,note
+0.0 min,0.000 mg,baseline zero
+7.5 min,0.030 mg,slow positive drift
+15.0 min,0.060 mg,end-of-run drift

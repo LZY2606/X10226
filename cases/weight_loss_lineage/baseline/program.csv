@@ -1,0 +1,7 @@
+start_time,end_time,start_temperature,end_temperature,kind,label
+0.0 min,2.0 min,30 C,65 C,ramp,initial heat
+2.0 min,5.0 min,65 C,165 C,ramp,moisture ramp
+5.0 min,6.0 min,165 C,210 C,ramp,shoulder
+6.0 min,9.5 min,210 C,345 C,ramp,main devolatilization
+9.5 min,11.0 min,345 C,405 C,isothermal,hold N2
+11.0 min,15.0 min,405 C,660 C,ramp,high temperature

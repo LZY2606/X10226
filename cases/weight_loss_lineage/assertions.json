@@ -1,0 +1,103 @@
+{
+  "assertions": [
+    {
+      "id": "A1",
+      "statement": "气体阀切换时间不等于样品反应时间：反应窗 = 阀时间 + 气氛延迟，样品温度 = 程序温度 - 热滞后",
+      "event_types": [
+        "import.layer_committed",
+        "derived.produced"
+      ],
+      "predicate": "reach_t_min == valve_t_min + atmosphere_delay_min \u0026\u0026 sample_t_k == program_t_k - thermal_lag_k",
+      "boundary": "atmosphere_delay"
+    },
+    {
+      "id": "A2",
+      "statement": "阶段可重叠，且各阶段失重不强制总和为 100%",
+      "event_types": [
+        "derived.produced",
+        "review.decision"
+      ],
+      "predicate": "exists(s1,s2): overlap(s1,s2) \u0026\u0026 no_normalization_to_100",
+      "boundary": "overlapping_peaks"
+    },
+    {
+      "id": "A3",
+      "statement": "数据缺口不跨越插值：DTG 与阶段在缺口处分段，缺测区间不生成点",
+      "event_types": [
+        "derived.produced"
+      ],
+      "predicate": "forall gap g: no_derived_point_inside(g) \u0026\u0026 segments_split_at(g)",
+      "boundary": "sampling_gap"
+    },
+    {
+      "id": "A4",
+      "statement": "天平基线漂移：终点质量扣除插值漂移；漂移源修订只使依赖链下游过期",
+      "event_types": [
+        "import.layer_committed",
+        "derived.produced"
+      ],
+      "predicate": "corrected == raw - drift(t) - blank(t) \u0026\u0026 stale_downstream_only(layer=drift)",
+      "boundary": "balance_drift"
+    },
+    {
+      "id": "A5",
+      "statement": "非单调噪声：质量正反弹被标记 positive_bounce，不改变失量方向结论",
+      "event_types": [
+        "derived.produced"
+      ],
+      "predicate": "dtg[i] \u003e 0 \u0026\u0026 neighbors_losing =\u003e non_monotonic flagged",
+      "boundary": "non_monotonic_noise"
+    },
+    {
+      "id": "A6",
+      "statement": "初重修订以新版本+父版本表达，旧版本仍可查看；残留率引用被选初重版本",
+      "event_types": [
+        "import.layer_committed",
+        "derived.produced"
+      ],
+      "predicate": "version.parent_version != '' \u0026\u0026 residue.init_mass_version == selected",
+      "boundary": "initial_mass_revision"
+    },
+    {
+      "id": "A7",
+      "statement": "导入半失败：好层提交、坏层拒绝并留诊断，会话状态 partial；格式错误整层失败 failed/partial",
+      "event_types": [
+        "import.began",
+        "import.layer_committed",
+        "import.concluded"
+      ],
+      "predicate": "session.status == 'partial' \u0026\u0026 layers_ok ∩ layers_bad == ∅",
+      "boundary": "import_half_failure"
+    },
+    {
+      "id": "A8",
+      "statement": "无法唯一决定时保留全部合法候选，拒绝原因/不确定性是一等数据",
+      "event_types": [
+        "derived.produced"
+      ],
+      "predicate": "ambiguous peak =\u003e \u003e=2 stage candidates with reject_reason/uncertainty",
+      "boundary": "overlapping_peaks"
+    },
+    {
+      "id": "A9",
+      "statement": "过期结果可查看但不能冒充当前结果；current 仅属于最新 batch",
+      "event_types": [
+        "derived.produced"
+      ],
+      "predicate": "node.current iff node.batch == latest_batch",
+      "boundary": "local_invalidation"
+    },
+    {
+      "id": "A10",
+      "statement": "回到任意旧事件恢复当时依赖版本与可见结论，不被最新结果覆盖",
+      "event_types": [
+        "*"
+      ],
+      "predicate": "fold(events up to seq) deterministic == state@seq",
+      "boundary": "history_replay"
+    }
+  ],
+  "case": "weight_loss_lineage",
+  "clock_origin": "2026-01-01T00:00:00Z",
+  "seed": 20260101
+}

@@ -1,0 +1,3 @@
+time,gas,action,flow,note
+0.0 min,N2,open,50 sccm,purge
+8.0 min,air,switch,50 sccm,earlier valve switch
