@@ -1,0 +1,17 @@
+t_min[min],drift_mg[mg],note
+0,0.0500,linear balance baseline drift v2
+4,0.0740,linear balance baseline drift v2
+8,0.0980,linear balance baseline drift v2
+12,0.1220,linear balance baseline drift v2
+16,0.1460,linear balance baseline drift v2
+20,0.1700,linear balance baseline drift v2
+24,0.1940,linear balance baseline drift v2
+28,0.2180,linear balance baseline drift v2
+32,0.2420,linear balance baseline drift v2
+36,0.2660,linear balance baseline drift v2
+40,0.2900,linear balance baseline drift v2
+44,0.3140,linear balance baseline drift v2
+48,0.3380,linear balance baseline drift v2
+52,0.3620,linear balance baseline drift v2
+56,0.3860,linear balance baseline drift v2
+60,0.4100,linear balance baseline drift v2

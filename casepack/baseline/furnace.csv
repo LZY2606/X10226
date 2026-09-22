@@ -1,0 +1,5 @@
+t_min[min],setpoint_c[degC],phase
+0,30,hold
+5,30,hold_end
+45,430,ramp_end
+60,430,final_hold
