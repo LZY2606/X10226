@@ -1,0 +1,5 @@
+# gas valve events (valve time is not sample-reaction time)
+unit: time=s
+time,from,to,note
+0,N2,N2,start
+1320,N2,air,valve switched to air

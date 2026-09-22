@@ -1,0 +1,6 @@
+# parameter revision 2: measured transport delay + thermal lag
+gas_delay_s=180
+thermal_lag_c=12
+min_prominence_mg_per_s=0.0003
+gap_factor=2.0
+drift_model=linear

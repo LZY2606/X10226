@@ -1,0 +1,9 @@
+# furnace program: initial hold, two ramps, final hold
+unit: time=s
+unit: temp=C
+name,t0,t1,temp_start,temp_end
+hold25,0,120,25,25
+ramp1,120,1500,25,255
+hold255,1500,1680,255,255
+ramp2,1680,2280,255,355
+hold355,2280,2400,355,355

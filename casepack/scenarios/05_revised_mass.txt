@@ -1,0 +1,6 @@
+# initial mass revision: balance tare rechecked
+mass=9.9800
+unit=mg
+method=crucible+sample minus tare (recheck)
+weighed_at=2026-09-19T09:10:00+09:00
+note=tare cup was damp at first weighing

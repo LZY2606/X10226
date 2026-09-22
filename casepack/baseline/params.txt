@@ -1,0 +1,5 @@
+gas_delay_s=60
+thermal_lag_c=8
+min_prominence_mg_per_s=0.0005
+gap_factor=2.0
+drift_model=linear

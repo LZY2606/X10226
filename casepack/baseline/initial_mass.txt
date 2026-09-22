@@ -1,0 +1,6 @@
+# analytical balance reading
+mass=10.0000
+unit=mg
+method=crucible+sample minus tare
+weighed_at=2026-09-19T08:00:00+09:00
+note=signed by operator A
