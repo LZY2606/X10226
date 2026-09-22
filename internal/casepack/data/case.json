@@ -1,0 +1,27 @@
+{
+  "id": "case/tga-stage-atmos-residue/v1",
+  "title": "失重谱系：TGA 阶段分解、气氛切换与残留物证据链",
+  "narrative": "热分析团队导入质量、温度、炉时间和气氛事件，审议每段失重、DTG 峰与最终残留率。基线完整保存原始采样点、天平漂移校正、炉程序、气体阀事件、空白曲线和样品初重；随后安排一次参数修订（漂移率）、一次只影响局部依赖的源数据改动（初重修订）和一次互相冲突的人工决定（接受 vs 否定同一候选集），并经过气氛延迟、天平基线漂移、重叠峰、非单调噪声、采样缺口、初重修订和导入半失败七种情形。",
+  "sources": {
+    "sample_points": "baseline/sample_points.csv",
+    "drift_correction": "baseline/drift_correction.csv",
+    "furnace_program": "baseline/furnace_program.csv",
+    "gas_valve_events": "baseline/gas_valve_events.csv",
+    "blank_curve": "baseline/blank_curve.csv",
+    "initial_mass": "baseline/initial_mass.csv"
+  },
+  "steps": [
+    {"op": "import_baseline", "comment": "导入基线六种来源，分层保存原始表示"},
+    {"op": "run_pipeline", "comment": "初始计算：规范化、漂移+空白校正、DTG、气氛时间线、阶段候选、残留链"},
+    {"op": "decision", "id": "dec-accept-split", "reviewer": "reviewer-chen", "action": "accept", "target": "stages:split", "rationale": "重叠峰在 240C 附近谷值仍高于阈值，按分裂集接受三段分解"},
+    {"op": "decision", "id": "dec-reject-split", "reviewer": "reviewer-li", "action": "reject", "target": "stages:split", "rationale": "认为 220-280C 是单一宽峰，应合并；与 reviewer-chen 冲突"},
+    {"op": "decision", "id": "dec-adjust-delay", "reviewer": "reviewer-chen", "action": "adjust", "target": "atmosphere", "params": {"atmos_delay_min": 1.8}, "supersedes": "dec-reject-split", "rationale": "根据阀后管路容积标定，气氛延迟由 1.2 min 修订为 1.8 min；阀切换时间不等于样品反应时间"},
+    {"op": "run_pipeline_adjusted", "comment": "以修订后的气氛延迟重算，旧结果保留但标记过期"},
+    {"op": "revise_source", "source": "initial_mass", "file": "revisions/initial_mass_v2.csv", "note": "初重修订：复称后为 12.461 mg", "comment": "只应使残留率与失重百分比链过期"},
+    {"op": "run_pipeline", "comment": "初重 v2 重算"},
+    {"op": "revise_source", "source": "drift_correction", "file": "revisions/drift_correction_v2.csv", "note": "参数修订：漂移率复测为 0.0019 mg/min", "comment": "只应使校正链（tg.corrected/dtg/stages/residue）过期，atmosphere 不受影响"},
+    {"op": "run_pipeline", "comment": "漂移率 v2 重算"},
+    {"op": "undo", "decision_id": "dec-adjust-delay", "reason": "标定复核发现 1.8 min 适用于另一台炉，撤销该参数调整", "comment": "撤销写入历史，不删除原事件"},
+    {"op": "import_partial", "comment": "导入半失败：gas_valve_events.csv 缺列，其余文件仍然入库，记录诊断"}
+  ]
+}
