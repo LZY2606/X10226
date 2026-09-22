@@ -1,0 +1,50 @@
+{
+  "format_version": "tga.replay/v1",
+  "seed": 20260922,
+  "steps": [
+    {
+      "seq": 1,
+      "kind": "import_baseline",
+      "note": "六分层基线导入，生成当前 artifact 与阶段候选"
+    },
+    {
+      "seq": 2,
+      "kind": "params_revision",
+      "mutation": "M1_atmosphere_delay",
+      "note": "一次参数修订：气氛延迟 12-\u003e30s"
+    },
+    {
+      "seq": 3,
+      "kind": "source_revision",
+      "mutation": "M2_baseline_drift",
+      "note": "只影响局部依赖：漂移率修订，仅依赖它的派生结果过期"
+    },
+    {
+      "seq": 4,
+      "kind": "decision",
+      "mutation": "M3_overlapping_peaks",
+      "decision": "accept",
+      "target": "split_a",
+      "note": "采纳重叠峰的一种分解"
+    },
+    {
+      "seq": 5,
+      "kind": "decision",
+      "decision": "accept",
+      "target": "merged",
+      "note": "互相冲突的人工决定：同时采纳 merged（互斥），形成冲突记录"
+    },
+    {
+      "seq": 6,
+      "kind": "undo",
+      "target": "merged",
+      "note": "撤销冲突决定，撤销写入历史"
+    },
+    {
+      "seq": 7,
+      "kind": "import_mutation",
+      "mutation": "M7_import_half_failure",
+      "note": "导入半失败：合法片段保留、非法层拒绝并诊断"
+    }
+  ]
+}

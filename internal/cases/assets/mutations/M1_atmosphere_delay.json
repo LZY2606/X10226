@@ -1,0 +1,16 @@
+{
+  "id": "M1_atmosphere_delay",
+  "title": "气氛延迟",
+  "scenario": "只修订参数：气氛传输延迟与热滞后使阀切换时刻不等于样品反应时刻",
+  "changes_direct_source": "params.atmosphere_delay_s",
+  "expected_status": "committed",
+  "expect_rule_code": "R1",
+  "layer": {
+    "kind": "__params__",
+    "parent_kind": "",
+    "data": {
+      "atmosphere_delay_s": 30,
+      "reason": "复核气体输送管长度后修订延迟（不改原始阀事件）"
+    }
+  }
+}

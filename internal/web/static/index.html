@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TGA 失重谱系复核台</title>
+<link rel="stylesheet" href="/styles.css"/>
+</head>
+<body>
+<header>
+  <h1>热重分析复核台 · 阶段分解 / 气氛事件 / 残留物证据链</h1>
+  <div class="toolbar">
+    <button id="btnLoadCase">载入仓库内离线案例</button>
+    <select id="projectSel"></select>
+    <button id="btnRefresh">刷新</button>
+    <button id="btnExport">导出</button>
+    <label class="filebtn">导入导出文件
+      <input type="file" id="importFile" accept="application/json"/>
+    </label>
+    <button id="btnDelete">删除本地项目</button>
+    <button id="btnReimportCase">删除后从导出再导入</button>
+  </div>
+  <div class="toolbar">
+    <label>历史事件 <input type="range" id="historySlider" min="1" max="1" value="1"/></label>
+    <span id="historyLabel">seq -</span>
+    <button id="btnHead">回到当前</button>
+    <span id="viewMode" class="mode"></span>
+  </div>
+</header>
+
+<main>
+  <section id="left">
+    <div class="card">
+      <h2>同步视图：TG/DTG · 炉程序 · 气氛时间线 · 阶段候选</h2>
+      <div id="figure" class="figure"></div>
+      <div class="hint">四面板共享炉时间轴；阴影为采样缺口（不跨缺口插值）；虚线 DTG；灰色虚线炉温、绿色滞后样品温度。</div>
+    </div>
+    <div class="card">
+      <h2>六层原始输入（分层版本，原始不可变）</h2>
+      <table id="layersTable"><thead><tr><th>层</th><th>当前版本</th><th>父版本</th><th>来源</th></tr></thead><tbody></tbody></table>
+    </div>
+    <div class="card">
+      <h2>参数（含算法版本与参数指纹）</h2>
+      <pre id="paramsBox"></pre>
+      <details><summary>修订参数（产生新版本，不覆盖旧派生结果）</summary>
+        <textarea id="paramsInput" rows="8"></textarea>
+        <button id="btnParams">提交参数修订</button>
+      </details>
+    </div>
+    <div class="card">
+      <h2>反例边界动作（每个只改一个直接来源）</h2>
+      <div id="mutationBtns" class="mutbtns"></div>
+      <div id="mutationNote" class="hint"></div>
+    </div>
+  </section>
+
+  <section id="right">
+    <div class="card">
+      <h2>阶段候选（候选/拒绝/未知皆一等数据）</h2>
+      <div id="candidates"></div>
+    </div>
+    <div class="card">
+      <h2>最终残留率（可展开计算链）</h2>
+      <div id="residue"></div>
+    </div>
+    <div class="card">
+      <h2>领域规则机器判定</h2>
+      <ul id="rules"></ul>
+    </div>
+    <div class="card">
+      <h2>人工决定与冲突 / 撤销历史</h2>
+      <ul id="decisionLog"></ul>
+    </div>
+    <div class="card">
+      <h2>事件溯源时间线</h2>
+      <ol id="eventList"></ol>
+    </div>
+  </section>
+</section>
+
+<dialog id="provDialog">
+  <article>
+    <h3 id="provTitle">来源与计算链</h3>
+    <pre id="provBody"></pre>
+    <div class="toolbar"><button id="provClose">关闭</button></div>
+  </article>
+</dialog>
+
+<div id="toast"></div>
+<script src="/app.js"></script>
+</body>
+</html>

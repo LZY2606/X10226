@@ -1,0 +1,18 @@
+{
+  "id": "M6_initial_mass_revision",
+  "title": "初重修订",
+  "scenario": "只改初重直接来源：m0 10.0 -\u003e 9.98mg；所有百分比与残留率依赖它而重算，mg 量不变",
+  "changes_direct_source": "initial_mass.mass_mg",
+  "expected_status": "committed",
+  "expect_rule_code": "R6",
+  "layer": {
+    "kind": "initial_mass",
+    "parent_kind": "initial_mass",
+    "data": {
+      "mass_mg": 9.98000,
+      "method": "tare_baseline_average_recalibrated",
+      "note": "初重复核修订（新版本，父版本保留）",
+      "reference_time_s": 0
+    }
+  }
+}

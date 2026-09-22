@@ -1,0 +1,18 @@
+{
+  "id": "M2_baseline_drift",
+  "title": "天平基线漂移",
+  "scenario": "只改漂移校正直接来源：速率翻倍，只影响 m_corr/DTG/残留链，原始采样点不变",
+  "changes_direct_source": "drift_correction.rate_mg_per_min",
+  "expected_status": "committed",
+  "expect_rule_code": "R7",
+  "layer": {
+    "kind": "drift_correction",
+    "parent_kind": "drift_correction",
+    "data": {
+      "basis": "m_balance_mg",
+      "note": "基线斜率修订（单一直接来源）",
+      "rate_mg_per_min": 0.0240,
+      "reference_time_s": 0
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "M7_import_half_failure",
+  "title": "导入半失败",
+  "scenario": "一次提交中含结构非法层与合法层：合法片段(initial_mass)保留、非法层(gas_valve_events)拒绝并留诊断，整体 partial",
+  "changes_direct_source": "gas_valve_events.data(structure)",
+  "expected_status": "partial",
+  "expect_rule_code": "",
+  "layer": {
+    "kind": "gas_valve_events",
+    "parent_kind": "gas_valve_events",
+    "data": {
+      "not_an_array": true
+    },
+    "fatal_structure": true,
+    "extra_layer": {
+      "kind": "initial_mass",
+      "parent_kind": "initial_mass",
+      "data": {
+        "mass_mg": 9.99500,
+        "method": "tare_baseline_average_halfcheck",
+        "note": "与非法层同批提交的合法片段",
+        "reference_time_s": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "M3_overlapping_peaks",
+  "title": "重叠峰",
+  "scenario": "只改峰识别参数：提高窗宽使中段重叠为多峰，保留全部合法 merged/split 候选",
+  "changes_direct_source": "params.dtg_window_s",
+  "expected_status": "committed",
+  "expect_rule_code": "R3",
+  "layer": {
+    "kind": "__params__",
+    "parent_kind": "",
+    "data": {
+      "dtg_window_s": 34,
+      "reason": "重叠峰复核：保留多个合法分解，不强制总和 100%"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+:root{--bd:#d8dee6;--mut:#1f6fb2;--warn:#c0392b;--ok:#2c7a2c;--bg:#f4f6f9}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:#22303c;font-size:13px}
+header{background:#10243a;color:#fff;padding:10px 16px;position:sticky;top:0;z-index:5}
+header h1{font-size:16px;margin:0 0 8px}
+.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px}
+button,.filebtn{background:#fff;border:1px solid #9fb0c3;border-radius:5px;padding:5px 10px;cursor:pointer;font-size:12px}
+button:hover{border-color:var(--mut)}
+button.danger{border-color:var(--warn);color:var(--warn)}
+.filebtn input{display:none}
+main{display:grid;grid-template-columns:1.35fr 1fr;gap:12px;padding:12px}
+.card{background:#fff;border:1px solid var(--bd);border-radius:8px;padding:10px 12px;margin-bottom:12px}
+.card h2{font-size:13px;margin:0 0 8px;color:#10243a}
+.figure{overflow:auto}
+.figure svg{width:100%;height:auto;border:1px solid #eee;border-radius:6px;background:#fff}
+.hint{color:#687;font-size:11px;margin-top:6px}
+table{border-collapse:collapse;width:100%;font-size:11px}
+th,td{border:1px solid #e3e8ee;padding:3px 6px;text-align:left;vertical-align:top}
+th{background:#eef2f7}
+.mono{font-family:ui-monospace,Menlo,Consolas,monospace}
+.stale{color:#b26a00;font-weight:700}
+.current{color:var(--ok);font-weight:700}
+.tag{display:inline-block;padding:1px 6px;border-radius:10px;font-size:10px;margin-left:4px}
+.tag.accept{background:#dff0d8;color:var(--ok)}
+.tag.reject{background:#fbe3e0;color:var(--warn)}
+.tag.conflict{background:#fdebd0;color:#a04000}
+.tag.unknown{background:#eceff3;color:#555}
+.candrow{border:1px solid #e3e8ee;border-radius:6px;padding:8px;margin-bottom:8px}
+.candrow .ids{font-size:10px;color:#789;word-break:break-all}
+.candrow.accepted{border-color:#b7dba9;background:#f6fbf4}
+.candrow.rejected{border-color:#ecc4be;background:#fdf4f2;opacity:.85}
+.chain li{margin-bottom:3px}
+details summary{cursor:pointer;color:var(--mut)}
+textarea,input[type=text]{width:100%;font-family:ui-monospace,monospace;font-size:11px}
+.mutbtns{display:flex;gap:6px;flex-wrap:wrap}
+.mutbtns button{font-size:11px}
+ul,ol{margin:0;padding-left:18px}
+#eventList li,#decisionLog li{margin-bottom:3px;font-size:11px}
+dialog{border:1px solid var(--bd);border-radius:8px;width:min(760px,92vw);padding:0}
+dialog article{padding:14px}
+#provBody{max-height:60vh;overflow:auto;background:#0f1720;color:#d7e3ee;padding:10px;border-radius:6px;font-size:11px}
+#toast{position:fixed;right:14px;bottom:14px;background:#10243a;color:#fff;padding:8px 12px;border-radius:6px;opacity:0;transition:opacity .25s;font-size:12px;max-width:46%}
+#toast.show{opacity:.96}
+.mode{font-weight:700;color:#ffd479}
+.cand{cursor:pointer}
+@media(max-width:1000px){main{grid-template-columns:1fr}}

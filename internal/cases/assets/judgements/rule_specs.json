@@ -1,0 +1,50 @@
+{
+  "format_version": "tga.judgements/v1",
+  "judgements": [
+    {
+      "code": "R1",
+      "statement": "气氛延迟和温度滞后使阀切换时间不等于样品反应时间",
+      "must_hold": true,
+      "assert_present": true,
+      "assert_status_any": [
+        "applies"
+      ]
+    },
+    {
+      "code": "R2",
+      "statement": "炉温与样品温度采用不同坐标基准（一阶滞后）",
+      "must_hold": true,
+      "assert_present": true
+    },
+    {
+      "code": "R3",
+      "statement": "重叠阶段保留全部合法候选，且不强制阶段百分比总和为 100%",
+      "must_hold": true,
+      "assert_present": true
+    },
+    {
+      "code": "R4",
+      "statement": "数据缺口不跨越插值；平滑与阶段窗口在区间边界停止",
+      "must_hold": true,
+      "assert_present": true
+    },
+    {
+      "code": "R5",
+      "statement": "非单调噪声原位保留并标记，不为画图丢弃",
+      "must_hold": true,
+      "assert_present": true
+    },
+    {
+      "code": "R6",
+      "statement": "阶段可重叠，单独报告失重，不重归一化到 100%",
+      "must_hold": true,
+      "assert_present": true
+    },
+    {
+      "code": "R7",
+      "statement": "天平基线漂移仅作用于派生层，原始采样点不可变",
+      "must_hold": true,
+      "assert_present": true
+    }
+  ]
+}
