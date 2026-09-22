@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TGA 失重谱系复查台</title>
+<link rel="stylesheet" href="/app.css"/>
+</head>
+<body>
+<header>
+  <h1>失重谱系：TGA 阶段分解 · 气氛切换 · 残留物证据链</h1>
+  <div id="projbar">
+    <select id="projects"></select>
+    <button id="newProject">新建项目</button>
+    <button id="exportBtn">导出事件包</button>
+    <label>导入事件包 <input type="file" id="importEventsFile" accept="application/json"/></label>
+    <a id="historyLink" href="#" hidden>历史视图 ↺</a>
+  </div>
+</header>
+
+<main>
+<section id="left">
+  <div class="panel" id="importPanel">
+    <h2>分层导入（原始采样 / 漂移 / 炉程序 / 气体阀 / 空白曲线 / 初重）</h2>
+    <div id="caseBar"></div>
+    <details>
+      <summary>自定义 JSON / CSV 导入（空值表示采样缺口）</summary>
+      <textarea id="importText" rows="10" spellcheck="false"></textarea>
+      <div><button id="importBtn">导入选中分层</button>
+           <span id="importStatus"></span></div>
+    </details>
+  </div>
+
+  <div class="panel" id="chartPanel">
+    <h2>同步视图：TG / DTG · 炉程序 · 气氛时间线 · 阶段候选</h2>
+    <div id="chartWrap"><img id="chart" alt="combined chart"/></div>
+    <div id="rules"></div>
+  </div>
+</section>
+
+<section id="right">
+  <div class="panel" id="candidates">
+    <h2>阶段与峰候选</h2>
+    <div id="peakSets"></div>
+    <div id="stages"></div>
+  </div>
+
+  <div class="panel" id="residuesPanel">
+    <h2>最终残留率（展开计算链）</h2>
+    <div id="residues"></div>
+  </div>
+
+  <div class="panel" id="paramsPanel">
+    <h2>参数版本（修订产生新版本与指纹）</h2>
+    <div id="paramsInfo"></div>
+    <details><summary>参数修订</summary><div id="paramsForm"></div>
+      <button id="reviseParamsBtn">提交参数修订</button></details>
+  </div>
+
+  <div class="panel" id="historyPanel">
+    <h2>历史 / 事件时间线（可回到旧版本）</h2>
+    <div id="history"></div>
+  </div>
+</section>
+</main>
+
+<div id="banner" hidden></div>
+<script src="/app.js"></script>
+</body>
+</html>
