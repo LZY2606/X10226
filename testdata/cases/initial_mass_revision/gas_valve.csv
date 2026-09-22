@@ -1,0 +1,3 @@
+at_s,from_gas,to_gas,flow_sccm
+0 s,,N2,200 sccm
+900 s,N2,air,200 sccm

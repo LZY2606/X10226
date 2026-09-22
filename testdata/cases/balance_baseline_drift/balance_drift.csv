@@ -1,0 +1,2 @@
+model,slope_mg_per_s,intercept_mg,note
+blank_linear,0.000080,0.0012,人工修订的较大漂移

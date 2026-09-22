@@ -1,0 +1,12 @@
+{
+  "algorithm": "tga-v1",
+  "gas_delay_s": 0,
+  "temp_lag_s": 0,
+  "dtg_half_width": 2,
+  "gap_max_s": 45,
+  "noise_sigma": 0.06,
+  "peak_prominence_pct": 0.04,
+  "min_stage_s": 20,
+  "overlap_touch_s": 6,
+  "blank_drift_model": "blank_linear"
+}

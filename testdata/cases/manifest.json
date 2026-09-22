@@ -1,0 +1,78 @@
+{
+  "case_id": "tga-lineage-case-001",
+  "name": "失重谱系：TGA 阶段分解、气氛切换与残留物证据链",
+  "material": "分子筛负载金属氧化物（合成离线样例，固定 seed）",
+  "algorithm": "tga-v1",
+  "variants": [
+    {
+      "name": "base",
+      "title": "基线版本：完整六层源数据",
+      "direct_source_changed": "all",
+      "expect_affected_layers": null,
+      "note": "原始采样点、天平漂移校正、炉程序、气体阀事件、空白曲线与样品初重分层保存"
+    },
+    {
+      "name": "atmosphere_delay",
+      "title": "反例：气氛延迟 + 温度滞后",
+      "direct_source_changed": "params",
+      "expect_affected_layers": [
+        "params"
+      ],
+      "note": "阀切换时间不等于样品反应时间；仅改参数层，候选/归因应局部过期"
+    },
+    {
+      "name": "balance_baseline_drift",
+      "title": "反例：天平基线漂移记录被修订",
+      "direct_source_changed": "balance_drift",
+      "expect_affected_layers": [
+        "balance_drift"
+      ],
+      "note": "以一条漂移记录替代空白拟合（仅漂移层直接来源变化）"
+    },
+    {
+      "name": "overlapping_peaks",
+      "title": "反例：重叠峰（双峰靠近）",
+      "direct_source_changed": "raw_points",
+      "expect_affected_layers": [
+        "raw_points"
+      ],
+      "note": "空气中两个氧化峰靠近，合并/拆分均为合法候选，阶段可重叠且不强制和为100%"
+    },
+    {
+      "name": "non_monotonic_noise",
+      "title": "反例：非单调噪声",
+      "direct_source_changed": "raw_points",
+      "expect_affected_layers": [
+        "raw_points"
+      ],
+      "note": "失重段中出现质量上跳，保留原值并标注，不得抹平"
+    },
+    {
+      "name": "sampling_gap",
+      "title": "反例：采样缺口",
+      "direct_source_changed": "raw_points",
+      "expect_affected_layers": [
+        "raw_points"
+      ],
+      "note": "920–1010 s 采样缺失；缺口不跨越插值，DTG/候选分段计算"
+    },
+    {
+      "name": "initial_mass_revision",
+      "title": "反例：初重修订",
+      "direct_source_changed": "initial_mass",
+      "expect_affected_layers": [
+        "initial_mass"
+      ],
+      "note": "初重由 10.000 mg 修订为 10.042 mg（新版本+父版本，不覆盖原件）"
+    },
+    {
+      "name": "import_partial_failure",
+      "title": "反例：导入半失败",
+      "direct_source_changed": "raw_points",
+      "expect_affected_layers": [
+        "raw_points"
+      ],
+      "note": "含不可转换单位与缺列行：好行入库、坏行留诊断，影响仅限原始采样点层"
+    }
+  ]
+}
