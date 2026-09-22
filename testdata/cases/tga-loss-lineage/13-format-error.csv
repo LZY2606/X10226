@@ -1,0 +1,4 @@
+[samples mg C s]
+time,furnace_temp,mass
+60,40,not-a-number
+90,45,9.9700

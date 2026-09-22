@@ -1,0 +1,6 @@
+[gas s]
+time,gas,note
+0,N2
+1200,Air
+[bogussection xyz]
+1,2,3

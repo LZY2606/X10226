@@ -1,0 +1,3 @@
+[program s C]
+start,end,temp_start,temp_end,mode
+0,2700,30,480,ramp

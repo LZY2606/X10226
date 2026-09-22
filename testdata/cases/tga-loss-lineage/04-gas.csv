@@ -1,0 +1,4 @@
+[gas s]
+time,gas,note
+0,N2,baseline inert
+2220,Air,valve switch to air (reach at 2250 s ~ 405 C)
