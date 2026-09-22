@@ -1,0 +1,5 @@
+# TGA loss-lineage offline case — counter-case: balance baseline drift revision (single source)
+# format: tga-1 | fixed seed 20260919 | units explicit
+
+[balance_drift]
+start=0s rate=0.05mg/min

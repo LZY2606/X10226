@@ -1,0 +1,6 @@
+# TGA loss-lineage offline case — counter-case: atmosphere delay revision (single source)
+# format: tga-1 | fixed seed 20260919 | units explicit
+
+# Only the delay parameter changes; valve time stays identical.
+[params]
+atmosphere_delay_s=120 temperature_lag_c=12

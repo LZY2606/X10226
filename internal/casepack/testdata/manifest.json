@@ -1,0 +1,28 @@
+{
+  "format": "tga-casepack-1",
+  "title": "TGA stage decomposition, atmosphere switching and residue evidence chain",
+  "seed": 20260919,
+  "baseline": "baseline.tga",
+  "scenarios": [
+    {"id": "atmosphere_delay", "file": "scenarios/atmosphere_delay.tga", "expect": "gas_boundary_shifts"},
+    {"id": "drift", "file": "scenarios/drift.tga", "expect": "drift_revision_local_invalidation"},
+    {"id": "overlap", "file": "scenarios/overlap.tga", "expect": "overlapping_peaks_separate"},
+    {"id": "noise", "file": "scenarios/noise.tga", "expect": "nonmonotonic_flag"},
+    {"id": "gap", "file": "scenarios/gap.tga", "expect": "gap_never_interpolated"},
+    {"id": "weight_revision", "file": "scenarios/weight_revision.tga", "expect": "initial_mass_supersedes"},
+    {"id": "half_fail", "file": "scenarios/half_fail.tga", "expect": "partial_import_preserved"}
+  ],
+  "narrative": {
+    "id": "loss_lineage_master",
+    "steps": [
+      {"op": "import", "file": "baseline.tga"},
+      {"op": "add_note", "code": "valve_time_ne_reaction_time", "message": "valve switch is not sample reaction time; delay and temperature lag apply"},
+      {"op": "set_params", "atmosphere_delay_s": 60, "reason": "revision: measured transfer line delay"},
+      {"op": "import", "file": "scenarios/drift.tga", "kind": "revision"},
+      {"op": "decide", "kind": "accept_stage", "which": "first_stage"},
+      {"op": "decide", "kind": "reject_stage", "which": "first_stage"},
+      {"op": "resolve_conflict", "choose": "accept"},
+      {"op": "undo", "target": "conflict_resolution"}
+    ]
+  }
+}

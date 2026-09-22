@@ -1,0 +1,5 @@
+# TGA loss-lineage offline case — counter-case: initial mass revision (parent-version relation)
+# format: tga-1 | fixed seed 20260919 | units explicit
+
+[sample_weight]
+mg=10.050mg

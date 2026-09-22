@@ -1,0 +1,5 @@
+# TGA loss-lineage offline case — counter-case: overlapping peaks kept separate (merge window widened)
+# format: tga-1 | fixed seed 20260919 | units explicit
+
+[params]
+peak_merge_window_s=240 peak_prominence_mg_s=0.0002

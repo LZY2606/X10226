@@ -1,0 +1,6 @@
+# TGA loss-lineage offline case — counter-case: fill part of the gap with two source points
+# format: tga-1 | fixed seed 20260919 | units explicit
+
+[raw_sample]
+t=1500s temp=600.0C mass=8.9931mg
+t=1580s temp=613.3C mass=9.0136mg

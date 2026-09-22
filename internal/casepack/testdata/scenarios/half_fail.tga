@@ -1,0 +1,10 @@
+# TGA loss-lineage offline case — counter-case: import half-failure (accepted + rejected rows kept)
+# format: tga-1 | fixed seed 20260919 | units explicit
+
+[raw_sample]
+t=3000s temp=800.0C mass=7.7817mg
+t=3020s temp=800C mass=notanumber
+t=3040s mass=6.1mg
+[unknown_section]
+foo=bar
+t=3060s temp=800C mass=6.0mg

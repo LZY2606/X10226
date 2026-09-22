@@ -1,0 +1,5 @@
+# TGA loss-lineage offline case — counter-case: non-monotonic noise, local source append
+# format: tga-1 | fixed seed 20260919 | units explicit
+
+[raw_sample]
+t=2120s temp=703.3C mass=9.1797mg

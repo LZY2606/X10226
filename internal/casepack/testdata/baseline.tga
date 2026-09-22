@@ -1,0 +1,212 @@
+# TGA loss-lineage offline case — baseline: raw points, drift, program, valves, blank, initial mass
+# format: tga-1 | fixed seed 20260919 | units explicit
+
+[sample_weight]
+mg=10.000mg
+
+[balance_drift]
+start=0s rate=0.02mg/min
+
+[blank_curve]
+t=0s mass=0.1000mg
+t=200s mass=0.0920mg
+t=400s mass=0.0840mg
+t=600s mass=0.0760mg
+t=800s mass=0.0680mg
+t=1000s mass=0.0600mg
+t=1200s mass=0.0520mg
+t=1400s mass=0.0440mg
+t=1600s mass=0.0360mg
+t=1800s mass=0.0280mg
+t=2000s mass=0.0200mg
+t=2200s mass=0.0120mg
+t=2400s mass=0.0040mg
+t=2600s mass=-0.0040mg
+t=2800s mass=-0.0120mg
+t=3000s mass=-0.0200mg
+t=3200s mass=-0.0280mg
+t=3400s mass=-0.0360mg
+t=3600s mass=-0.0440mg
+
+[furnace_program]
+start=0s end=500s target=150C ramp=15C/min
+start=500s end=600s target=150C ramp=0C/min
+start=600s end=1500s target=600C ramp=30C/min
+start=1500s end=2700s target=800C ramp=10C/min
+start=2700s end=3600s target=800C ramp=0C/min
+
+[gas_valve]
+at=0s from=ambient to=N2
+at=2400s from=N2 to=O2
+
+[raw_sample]
+t=0s temp=25.0C mass=10.1000mg
+t=20s temp=30.0C mass=10.1059mg
+t=40s temp=35.0C mass=10.1117mg
+t=60s temp=40.0C mass=10.1176mg
+t=80s temp=45.0C mass=10.1235mg
+t=100s temp=50.0C mass=10.1293mg
+t=120s temp=55.0C mass=10.1352mg
+t=140s temp=60.0C mass=10.1411mg
+t=160s temp=65.0C mass=10.1469mg
+t=180s temp=70.0C mass=10.1528mg
+t=200s temp=75.0C mass=10.1586mg
+t=220s temp=80.0C mass=10.1643mg
+t=240s temp=85.0C mass=10.1698mg
+t=260s temp=90.0C mass=10.1744mg
+t=280s temp=95.0C mass=10.1770mg
+t=300s temp=100.0C mass=10.1759mg
+t=320s temp=105.0C mass=10.1684mg
+t=340s temp=110.0C mass=10.1516mg
+t=360s temp=115.0C mass=10.1239mg
+t=380s temp=120.0C mass=10.0861mg
+t=400s temp=125.0C mass=10.0423mg
+t=420s temp=130.0C mass=9.9985mg
+t=440s temp=135.0C mass=9.9608mg
+t=460s temp=140.0C mass=9.9331mg
+t=480s temp=145.0C mass=9.9163mg
+t=500s temp=150.0C mass=9.9087mg
+t=520s temp=159.0C mass=9.9076mg
+t=540s temp=168.0C mass=9.9103mg
+t=560s temp=177.0C mass=9.9149mg
+t=580s temp=186.0C mass=9.9203mg
+t=600s temp=195.0C mass=9.9260mg
+t=620s temp=204.0C mass=9.9319mg
+t=640s temp=213.0C mass=9.9377mg
+t=660s temp=222.0C mass=9.9436mg
+t=680s temp=231.0C mass=9.9495mg
+t=700s temp=240.0C mass=9.9553mg
+t=720s temp=249.0C mass=9.9612mg
+t=740s temp=258.0C mass=9.9671mg
+t=760s temp=267.0C mass=9.9729mg
+t=780s temp=276.0C mass=9.9788mg
+t=800s temp=285.0C mass=9.9847mg
+t=820s temp=294.0C mass=9.9905mg
+t=840s temp=303.0C mass=9.9964mg
+t=860s temp=312.0C mass=10.0023mg
+t=880s temp=321.0C mass=10.0081mg
+t=900s temp=330.0C mass=10.0140mg
+t=920s temp=339.0C mass=10.0198mg
+t=940s temp=348.0C mass=10.0255mg
+t=960s temp=357.0C mass=10.0310mg
+t=980s temp=366.0C mass=10.0360mg
+t=1000s temp=375.0C mass=10.0397mg
+t=1020s temp=384.0C mass=10.0413mg
+t=1040s temp=393.0C mass=10.0389mg
+t=1060s temp=402.0C mass=10.0300mg
+t=1080s temp=411.0C mass=10.0117mg
+t=1100s temp=420.0C mass=9.9810mg
+t=1120s temp=429.0C mass=9.9354mg
+t=1140s temp=438.0C mass=9.8743mg
+t=1160s temp=447.0C mass=9.7990mg
+t=1180s temp=456.0C mass=9.7127mg
+t=1200s temp=465.0C mass=9.6205mg
+t=1220s temp=474.0C mass=9.5272mg
+t=1240s temp=483.0C mass=9.4374mg
+t=1260s temp=492.0C mass=9.3539mg
+t=1280s temp=501.0C mass=9.2784mg
+t=1300s temp=510.0C mass=9.2116mg
+t=1320s temp=519.0C mass=9.1538mg
+t=1340s temp=528.0C mass=9.1051mg
+t=1360s temp=537.0C mass=9.0658mg
+t=1380s temp=546.0C mass=9.0356mg
+t=1400s temp=555.0C mass=9.0141mg
+t=1640s temp=623.3C mass=9.0311mg
+t=1660s temp=626.7C mass=9.0369mg
+t=1680s temp=630.0C mass=9.0428mg
+t=1700s temp=633.3C mass=9.0487mg
+t=1720s temp=636.7C mass=9.0545mg
+t=1740s temp=640.0C mass=9.0604mg
+t=1760s temp=643.3C mass=9.0663mg
+t=1780s temp=646.7C mass=9.0721mg
+t=1800s temp=650.0C mass=9.0780mg
+t=1820s temp=653.3C mass=9.0839mg
+t=1840s temp=656.7C mass=9.0897mg
+t=1860s temp=660.0C mass=9.0956mg
+t=1880s temp=663.3C mass=9.1015mg
+t=1900s temp=666.7C mass=9.1073mg
+t=1920s temp=670.0C mass=9.1132mg
+t=1940s temp=673.3C mass=9.1191mg
+t=1960s temp=676.7C mass=9.1249mg
+t=1980s temp=680.0C mass=9.1308mg
+t=2000s temp=683.3C mass=9.1367mg
+t=2020s temp=686.7C mass=9.1425mg
+t=2040s temp=690.0C mass=9.1484mg
+t=2060s temp=693.3C mass=9.1542mg
+t=2080s temp=696.7C mass=9.1601mg
+t=2100s temp=700.0C mass=9.1709mg
+t=2120s temp=703.3C mass=9.1717mg
+t=2140s temp=706.7C mass=9.1774mg
+t=2160s temp=710.0C mass=9.1830mg
+t=2180s temp=713.3C mass=9.1884mg
+t=2200s temp=716.7C mass=9.1936mg
+t=2220s temp=720.0C mass=9.1983mg
+t=2240s temp=723.3C mass=9.2024mg
+t=2260s temp=726.7C mass=9.2056mg
+t=2280s temp=730.0C mass=9.2074mg
+t=2300s temp=733.3C mass=9.2073mg
+t=2320s temp=736.7C mass=9.2048mg
+t=2340s temp=740.0C mass=9.1989mg
+t=2360s temp=743.3C mass=9.1887mg
+t=2380s temp=746.7C mass=9.1734mg
+t=2400s temp=750.0C mass=9.1518mg
+t=2420s temp=753.3C mass=9.1228mg
+t=2440s temp=756.7C mass=9.0855mg
+t=2460s temp=760.0C mass=9.0394mg
+t=2480s temp=763.3C mass=8.9838mg
+t=2500s temp=766.7C mass=8.9189mg
+t=2520s temp=770.0C mass=8.8451mg
+t=2540s temp=773.3C mass=8.7634mg
+t=2560s temp=776.7C mass=8.6753mg
+t=2580s temp=780.0C mass=8.5827mg
+t=2600s temp=783.3C mass=8.4877mg
+t=2620s temp=786.7C mass=8.3927mg
+t=2640s temp=790.0C mass=8.3000mg
+t=2660s temp=793.3C mass=8.2119mg
+t=2680s temp=796.7C mass=8.1302mg
+t=2700s temp=800.0C mass=8.0564mg
+t=2720s temp=800.0C mass=7.9915mg
+t=2740s temp=800.0C mass=7.9360mg
+t=2760s temp=800.0C mass=7.8898mg
+t=2780s temp=800.0C mass=7.8526mg
+t=2800s temp=800.0C mass=7.8236mg
+t=2820s temp=800.0C mass=7.8019mg
+t=2840s temp=800.0C mass=7.7866mg
+t=2860s temp=800.0C mass=7.7765mg
+t=2880s temp=800.0C mass=7.7706mg
+t=2900s temp=800.0C mass=7.7680mg
+t=2920s temp=800.0C mass=7.7679mg
+t=2940s temp=800.0C mass=7.7698mg
+t=2960s temp=800.0C mass=7.7729mg
+t=2980s temp=800.0C mass=7.7770mg
+t=3000s temp=800.0C mass=7.7817mg
+t=3020s temp=800.0C mass=7.7869mg
+t=3040s temp=800.0C mass=7.7923mg
+t=3060s temp=800.0C mass=7.7979mg
+t=3080s temp=800.0C mass=7.8037mg
+t=3100s temp=800.0C mass=7.8094mg
+t=3120s temp=800.0C mass=7.8153mg
+t=3140s temp=800.0C mass=7.8211mg
+t=3160s temp=800.0C mass=7.8269mg
+t=3180s temp=800.0C mass=7.8328mg
+t=3200s temp=800.0C mass=7.8387mg
+t=3220s temp=800.0C mass=7.8445mg
+t=3240s temp=800.0C mass=7.8504mg
+t=3260s temp=800.0C mass=7.8563mg
+t=3280s temp=800.0C mass=7.8621mg
+t=3300s temp=800.0C mass=7.8680mg
+t=3320s temp=800.0C mass=7.8739mg
+t=3340s temp=800.0C mass=7.8797mg
+t=3360s temp=800.0C mass=7.8856mg
+t=3380s temp=800.0C mass=7.8915mg
+t=3400s temp=800.0C mass=7.8973mg
+t=3420s temp=800.0C mass=7.9032mg
+t=3440s temp=800.0C mass=7.9091mg
+t=3460s temp=800.0C mass=7.9149mg
+t=3480s temp=800.0C mass=7.9208mg
+t=3500s temp=800.0C mass=7.9267mg
+t=3520s temp=800.0C mass=7.9325mg
+t=3540s temp=800.0C mass=7.9384mg
+t=3560s temp=800.0C mass=7.9443mg
+t=3580s temp=800.0C mass=7.9501mg
+t=3600s temp=800.0C mass=7.9560mg
