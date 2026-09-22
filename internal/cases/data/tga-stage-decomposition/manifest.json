@@ -1,0 +1,33 @@
+{
+  "id": "tga-stage-decomposition",
+  "title": "失重谱系：TGA 阶段分解、气氛切换与残留物证据链",
+  "seed": 20260919,
+  "virtualStart": "2026-01-01T00:00:00Z",
+  "files": [
+    "v1_bundle.txt",
+    "03_drift_revision.txt",
+    "04_initial_mass_revision.txt",
+    "05_half_failed_valves.txt",
+    "06_partial_bundle.txt",
+    "README.md",
+    "REPLAY.md"
+  ],
+  "replay": [
+    {"n": 1, "kind": "import_bundle", "file": "v1_bundle.txt", "expect": "six layers accepted; four peak candidates groups incl. one overlap cluster; final residue ~47%"},
+    {"n": 2, "kind": "params", "label": "valve delay 18s -> 30s", "reason": "longer transfer line in this run", "expect": "only atmosphere reaction windows and atmosphere-derived views change"},
+    {"n": 3, "kind": "import_layer", "layer": "drift_correction", "file": "03_drift_revision.txt", "expect": "only drift-dependent corrected mass, DTG, stages and residues go stale; valve/furnace identities unchanged"},
+    {"n": 4, "kind": "import_layer", "layer": "initial_mass", "file": "04_initial_mass_revision.txt", "expect": "percent values change; mg values and raw points unchanged"},
+    {"n": 5, "kind": "import_layer", "layer": "gas_valve_events", "file": "05_half_failed_valves.txt", "expect": "rejected fragment: current valve source and reaction windows unchanged; diagnostics retained"},
+    {"n": 6, "kind": "import_bundle", "file": "06_partial_bundle.txt", "expect": "valve layer replaced; unknown layer fragment rejected and preserved in history"},
+    {"n": 7, "kind": "rule", "target": "c1_p0", "decision": "accept", "reason": "shoulder resolved as distinct stage", "expect": "candidate marked ruled_accepted"},
+    {"n": 8, "kind": "rule", "target": "c1_p0", "decision": "reject", "reason": "reviewer prefers merged stage", "expect": "conflict recorded; both rulings kept active pending resolution"},
+    {"n": 9, "kind": "resolve", "target": "c1_p0", "reason": "panel keeps the rejection", "expect": "one ruling deactivated; event retained"},
+    {"n": 10, "kind": "undo", "target": "kept ruling of step 9", "reason": "reopened after DTG zoom", "expect": "ruling deactivated by undo event; candidate returns to derived status"}
+  ],
+  "expectations": {
+    "atmosphere_delay": {"note": "reaction windows start at valve time + 18s (later 30s); measured lag ~6K reported"},
+    "overlap": {"note": "c1_p0/c1_p1 overlap and c1_m0 is the merged alternative; not exclusive percentage accounting"},
+    "gap": {"note": "GAP at 1200s-1260s is never interpolated in TG or DTG"},
+    "half_fail": {"status": "fragment rejected, layer unchanged", "affectsOnly": ["diagnostics"]}
+  }
+}

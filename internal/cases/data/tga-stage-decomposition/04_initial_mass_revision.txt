@@ -1,0 +1,4 @@
+# initial_mass — sample starting mass corrected after re-taring
+mass: 10.012 mg
+at: 0 s
+basis: buoyancy-corrected tared reading; supersedes 10.000 mg

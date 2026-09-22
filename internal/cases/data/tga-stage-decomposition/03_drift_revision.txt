@@ -1,0 +1,4 @@
+# drift_correction — revised baseline slope (local source revision)
+rate: 0.0006 mg/s
+anchor_at: 0 s
+note: recalibrated from the pre-run hold; supersedes 0.0004 mg/s

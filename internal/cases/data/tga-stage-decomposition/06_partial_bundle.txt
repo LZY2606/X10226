@@ -1,0 +1,6 @@
+# gas_valve_events — valid replacement fragment
+0 s Ar 50 mL/min initial inert atmosphere
+1620 s air 50 mL/min switch to oxidizing
+
+# unknown_instrument_dump — parser cannot accept this layer; fragment is kept
+0xDEADBEEF ?? -- raw instrument fragment preserved with diagnostics
