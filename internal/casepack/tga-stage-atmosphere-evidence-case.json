@@ -1,0 +1,978 @@
+{
+  "schema": "tga-domain-casepack/v1",
+  "title": "失重谱系：TGA 阶段分解、气氛切换与残留物证据链",
+  "description": "面向热分析团队的离线案例：分层基线、天平漂移、炉程序、气体阀、空白曲线、初重、重叠峰、非单调噪声、采样缺口、初重修订、导入半失败和冲突人工决定。",
+  "seed": 20260923,
+  "initial_import": {
+    "batch_id": "baseline-batch-001",
+    "reason": "热分析团队分层导入：质量、温度、炉时间、气氛事件、空白曲线和样品初重",
+    "schema": "tga-source-batch/v1",
+    "sources": [
+      {
+        "content": {
+          "coordinate_basis": "furnace_program_time_seconds_from_run_start; balance_tare_mg; thermocouple_celsius",
+          "rows": [
+            {
+              "mass": {
+                "label": "天平原始读数",
+                "raw_retained": true,
+                "unit": "mg",
+                "value": 10.5
+              },
+              "temperature": {
+                "label": "样品温度",
+                "raw_retained": true,
+                "unit": "°C",
+                "value": 30
+              },
+              "time": {
+                "label": "炉时间",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 0
+              }
+            },
+            {
+              "mass": {
+                "label": "天平原始读数",
+                "raw_retained": true,
+                "unit": "mg",
+                "value": 10.5
+              },
+              "temperature": {
+                "label": "样品温度",
+                "raw_retained": true,
+                "unit": "°C",
+                "value": 70
+              },
+              "time": {
+                "label": "炉时间",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 60
+              }
+            },
+            {
+              "mass": {
+                "label": "天平原始读数",
+                "raw_retained": true,
+                "unit": "mg",
+                "value": 10.4
+              },
+              "temperature": {
+                "label": "样品温度",
+                "raw_retained": true,
+                "unit": "°C",
+                "value": 110
+              },
+              "time": {
+                "label": "炉时间",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 120
+              }
+            },
+            {
+              "mass": {
+                "label": "天平原始读数",
+                "raw_retained": true,
+                "unit": "mg",
+                "value": 10.1
+              },
+              "temperature": {
+                "label": "样品温度",
+                "raw_retained": true,
+                "unit": "°C",
+                "value": 150
+              },
+              "time": {
+                "label": "炉时间",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 180
+              }
+            },
+            {
+              "mass": {
+                "label": "天平原始读数",
+                "raw_retained": true,
+                "unit": "mg",
+                "value": 9.6
+              },
+              "temperature": {
+                "label": "样品温度",
+                "raw_retained": true,
+                "unit": "°C",
+                "value": 190
+              },
+              "time": {
+                "label": "炉时间",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 240
+              }
+            },
+            {
+              "mass": {
+                "label": "天平原始读数",
+                "raw_retained": true,
+                "unit": "mg",
+                "value": 9.2
+              },
+              "temperature": {
+                "label": "样品温度",
+                "raw_retained": true,
+                "unit": "°C",
+                "value": 230
+              },
+              "time": {
+                "label": "炉时间",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 300
+              }
+            },
+            {
+              "mass": {
+                "label": "天平原始读数",
+                "raw_retained": true,
+                "unit": "mg",
+                "value": 8.9
+              },
+              "temperature": {
+                "label": "样品温度",
+                "raw_retained": true,
+                "unit": "°C",
+                "value": 270
+              },
+              "time": {
+                "label": "炉时间",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 360
+              }
+            },
+            {
+              "mass": {
+                "label": "天平原始读数",
+                "raw_retained": true,
+                "unit": "mg",
+                "value": 8.4
+              },
+              "temperature": {
+                "label": "样品温度",
+                "raw_retained": true,
+                "unit": "°C",
+                "value": 310
+              },
+              "time": {
+                "label": "炉时间",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 420
+              }
+            },
+            {
+              "mass": {
+                "label": "天平原始读数",
+                "raw_retained": true,
+                "unit": "mg",
+                "value": 8.2
+              },
+              "temperature": {
+                "label": "样品温度",
+                "raw_retained": true,
+                "unit": "°C",
+                "value": 350
+              },
+              "time": {
+                "label": "炉时间",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 480
+              }
+            },
+            {
+              "mass": {
+                "label": "天平原始读数",
+                "raw_retained": true,
+                "unit": "mg",
+                "value": 8.1
+              },
+              "temperature": {
+                "label": "样品温度",
+                "raw_retained": true,
+                "unit": "°C",
+                "value": 390
+              },
+              "time": {
+                "label": "炉时间",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 540
+              }
+            },
+            {
+              "mass": {
+                "label": "天平原始读数",
+                "raw_retained": true,
+                "unit": "mg",
+                "value": 4.7
+              },
+              "temperature": {
+                "label": "样品温度",
+                "raw_retained": true,
+                "unit": "°C",
+                "value": 470
+              },
+              "time": {
+                "label": "炉时间",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 660
+              }
+            },
+            {
+              "mass": {
+                "label": "天平原始读数",
+                "raw_retained": true,
+                "unit": "mg",
+                "value": 4.6
+              },
+              "temperature": {
+                "label": "样品温度",
+                "raw_retained": true,
+                "unit": "°C",
+                "value": 510
+              },
+              "time": {
+                "label": "炉时间",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 720
+              }
+            },
+            {
+              "mass": {
+                "label": "天平原始读数",
+                "raw_retained": true,
+                "unit": "mg",
+                "value": 4.62
+              },
+              "temperature": {
+                "label": "样品温度",
+                "raw_retained": true,
+                "unit": "°C",
+                "value": 550
+              },
+              "time": {
+                "label": "炉时间",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 780
+              }
+            }
+          ]
+        },
+        "content_type": "application/json",
+        "id": "src-raw-samples-v1",
+        "layer": "raw_samples"
+      },
+      {
+        "content": {
+          "intercept": {
+            "label": "零点截距",
+            "raw_retained": true,
+            "unit": "mg",
+            "value": 0.001
+          },
+          "model": "linear_baseline_drift",
+          "slope": {
+            "label": "天平基线斜率",
+            "raw_retained": true,
+            "unit": "mg/min",
+            "value": 0.002
+          }
+        },
+        "content_type": "application/json",
+        "id": "src-balance-drift-v1",
+        "layer": "balance_drift_correction"
+      },
+      {
+        "content": {
+          "coordinate_basis": "furnace_program_time_seconds",
+          "segments": [
+            {
+              "end": {
+                "label": "升温结束",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 780
+              },
+              "end_temp": {
+                "label": "结束温度",
+                "raw_retained": true,
+                "unit": "°C",
+                "value": 550
+              },
+              "kind": "ramp",
+              "start": {
+                "label": "程序开始",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 0
+              },
+              "start_temp": {
+                "label": "开始温度",
+                "raw_retained": true,
+                "unit": "°C",
+                "value": 30
+              }
+            },
+            {
+              "end": {
+                "label": "保持结束",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 900
+              },
+              "end_temp": {
+                "label": "恒温",
+                "raw_retained": true,
+                "unit": "°C",
+                "value": 550
+              },
+              "kind": "hold",
+              "start": {
+                "label": "保持开始",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 780
+              },
+              "start_temp": {
+                "label": "恒温",
+                "raw_retained": true,
+                "unit": "°C",
+                "value": 550
+              }
+            }
+          ]
+        },
+        "content_type": "application/json",
+        "id": "src-furnace-v1",
+        "layer": "furnace_program"
+      },
+      {
+        "content": {
+          "coordinate_basis": "furnace_program_time_seconds",
+          "events": [
+            {
+              "atmosphere_delay": {
+                "label": "传输延迟",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 60
+              },
+              "from_atmosphere": "N2",
+              "id": "valve-air-on",
+              "temperature_lag": {
+                "label": "温度/反应滞后",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 60
+              },
+              "to_atmosphere": "air",
+              "valve_at": {
+                "label": "切空气阀时间",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 480
+              },
+              "window_end_valve_at": {
+                "label": "空气阀窗口结束",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 780
+              }
+            }
+          ]
+        },
+        "content_type": "application/json",
+        "id": "src-gas-events-v1",
+        "layer": "gas_valve_events"
+      },
+      {
+        "content": {
+          "coordinate_basis": "furnace_program_time_seconds; empty_pan_mg",
+          "rows": [
+            {
+              "mass": {
+                "label": "空白读数",
+                "raw_retained": true,
+                "unit": "mg",
+                "value": 0.01
+              },
+              "time": {
+                "label": "炉时间",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 0
+              }
+            },
+            {
+              "mass": {
+                "label": "空白读数",
+                "raw_retained": true,
+                "unit": "mg",
+                "value": 0.012
+              },
+              "time": {
+                "label": "炉时间",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 120
+              }
+            },
+            {
+              "mass": {
+                "label": "空白读数",
+                "raw_retained": true,
+                "unit": "mg",
+                "value": 0.014
+              },
+              "time": {
+                "label": "炉时间",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 240
+              }
+            },
+            {
+              "mass": {
+                "label": "空白读数",
+                "raw_retained": true,
+                "unit": "mg",
+                "value": 0.016
+              },
+              "time": {
+                "label": "炉时间",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 360
+              }
+            },
+            {
+              "mass": {
+                "label": "空白读数",
+                "raw_retained": true,
+                "unit": "mg",
+                "value": 0.018
+              },
+              "time": {
+                "label": "炉时间",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 540
+              }
+            },
+            {
+              "mass": {
+                "label": "空白读数",
+                "raw_retained": true,
+                "unit": "mg",
+                "value": 0.02
+              },
+              "time": {
+                "label": "炉时间",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 660
+              }
+            },
+            {
+              "mass": {
+                "label": "空白读数",
+                "raw_retained": true,
+                "unit": "mg",
+                "value": 0.022
+              },
+              "time": {
+                "label": "炉时间",
+                "raw_retained": true,
+                "unit": "s",
+                "value": 780
+              }
+            }
+          ]
+        },
+        "content_type": "application/json",
+        "id": "src-blank-v1",
+        "layer": "blank_curve"
+      },
+      {
+        "content": {
+          "mass": {
+            "label": "分层保存的样品初重",
+            "raw_retained": true,
+            "unit": "mg",
+            "value": 10.5
+          },
+          "method": "pre_run_balance_layer_reviewed_independently"
+        },
+        "content_type": "application/json",
+        "id": "src-initial-mass-v1",
+        "layer": "sample_initial_mass"
+      },
+      {
+        "content": {
+          "blank_gap_threshold": {
+            "label": "空白插值阈值",
+            "raw_retained": true,
+            "unit": "s",
+            "value": 180
+          },
+          "coordinate_basis": "furnace_time_seconds",
+          "noise_threshold": {
+            "label": "非单调噪声阈值",
+            "raw_retained": true,
+            "unit": "mg/min",
+            "value": 0.005
+          },
+          "overlap_strategy": "retain_narrow_and_broad",
+          "peak_threshold": {
+            "label": "DTG 峰阈值",
+            "raw_retained": true,
+            "unit": "mg/min",
+            "value": 0.38
+          },
+          "sample_gap_threshold": {
+            "label": "采样缺口阈值",
+            "raw_retained": true,
+            "unit": "s",
+            "value": 90
+          }
+        },
+        "content_type": "application/json",
+        "id": "src-parameters-v1",
+        "layer": "analysis_parameters"
+      }
+    ]
+  },
+  "replay": {
+    "initial_mass_revision": {
+      "batch_id": "revision-initial-mass-002",
+      "parent_batch": "baseline-batch-001",
+      "reason": "样品初重复核后修订；只影响残留率和阶段百分比",
+      "schema": "tga-source-batch/v1",
+      "scope": "sample_initial_mass_only",
+      "sources": [
+        {
+          "content": {
+            "mass": {
+              "label": "修订后的样品初重",
+              "raw_retained": true,
+              "unit": "mg",
+              "value": 10.48
+            },
+            "method": "post_import_balance_audit"
+          },
+          "content_type": "application/json",
+          "id": "src-initial-mass-v2",
+          "layer": "sample_initial_mass",
+          "parent_id": "src-initial-mass-v1"
+        }
+      ]
+    },
+    "balance_drift_revision": {
+      "batch_id": "revision-baseline-drift-003",
+      "parent_batch": "revision-initial-mass-002",
+      "reason": "天平基线漂移重估；参数规则版本产生新派生指纹",
+      "schema": "tga-source-batch/v1",
+      "scope": "balance_drift_only",
+      "sources": [
+        {
+          "content": {
+            "intercept": {
+              "label": "修订零点截距",
+              "raw_retained": true,
+              "unit": "mg",
+              "value": 0.0008
+            },
+            "model": "linear_baseline_drift_reviewed",
+            "slope": {
+              "label": "修订天平基线斜率",
+              "raw_retained": true,
+              "unit": "mg/min",
+              "value": 0.0016
+            }
+          },
+          "content_type": "application/json",
+          "id": "src-balance-drift-v2",
+          "layer": "balance_drift_correction",
+          "parent_id": "src-balance-drift-v1"
+        }
+      ]
+    },
+    "local_raw_revision": {
+      "batch_id": "revision-local-raw-004",
+      "parent_batch": "revision-baseline-drift-003",
+      "reason": "只修订 420 s 原始采样点；用于检验局部依赖过期",
+      "schema": "tga-source-batch/v1",
+      "scope": "raw_samples.rows[7].mass_only",
+      "sources": [
+        {
+          "content": {
+            "coordinate_basis": "furnace_program_time_seconds_from_run_start; balance_tare_mg; thermocouple_celsius",
+            "rows": [
+              {
+                "mass": {
+                  "label": "天平原始读数",
+                  "raw_retained": true,
+                  "unit": "mg",
+                  "value": 10.5
+                },
+                "temperature": {
+                  "label": "样品温度",
+                  "raw_retained": true,
+                  "unit": "°C",
+                  "value": 30
+                },
+                "time": {
+                  "label": "炉时间",
+                  "raw_retained": true,
+                  "unit": "s",
+                  "value": 0
+                }
+              },
+              {
+                "mass": {
+                  "label": "天平原始读数",
+                  "raw_retained": true,
+                  "unit": "mg",
+                  "value": 10.5
+                },
+                "temperature": {
+                  "label": "样品温度",
+                  "raw_retained": true,
+                  "unit": "°C",
+                  "value": 70
+                },
+                "time": {
+                  "label": "炉时间",
+                  "raw_retained": true,
+                  "unit": "s",
+                  "value": 60
+                }
+              },
+              {
+                "mass": {
+                  "label": "天平原始读数",
+                  "raw_retained": true,
+                  "unit": "mg",
+                  "value": 10.4
+                },
+                "temperature": {
+                  "label": "样品温度",
+                  "raw_retained": true,
+                  "unit": "°C",
+                  "value": 110
+                },
+                "time": {
+                  "label": "炉时间",
+                  "raw_retained": true,
+                  "unit": "s",
+                  "value": 120
+                }
+              },
+              {
+                "mass": {
+                  "label": "天平原始读数",
+                  "raw_retained": true,
+                  "unit": "mg",
+                  "value": 10.1
+                },
+                "temperature": {
+                  "label": "样品温度",
+                  "raw_retained": true,
+                  "unit": "°C",
+                  "value": 150
+                },
+                "time": {
+                  "label": "炉时间",
+                  "raw_retained": true,
+                  "unit": "s",
+                  "value": 180
+                }
+              },
+              {
+                "mass": {
+                  "label": "天平原始读数",
+                  "raw_retained": true,
+                  "unit": "mg",
+                  "value": 9.6
+                },
+                "temperature": {
+                  "label": "样品温度",
+                  "raw_retained": true,
+                  "unit": "°C",
+                  "value": 190
+                },
+                "time": {
+                  "label": "炉时间",
+                  "raw_retained": true,
+                  "unit": "s",
+                  "value": 240
+                }
+              },
+              {
+                "mass": {
+                  "label": "天平原始读数",
+                  "raw_retained": true,
+                  "unit": "mg",
+                  "value": 9.2
+                },
+                "temperature": {
+                  "label": "样品温度",
+                  "raw_retained": true,
+                  "unit": "°C",
+                  "value": 230
+                },
+                "time": {
+                  "label": "炉时间",
+                  "raw_retained": true,
+                  "unit": "s",
+                  "value": 300
+                }
+              },
+              {
+                "mass": {
+                  "label": "天平原始读数",
+                  "raw_retained": true,
+                  "unit": "mg",
+                  "value": 8.9
+                },
+                "temperature": {
+                  "label": "样品温度",
+                  "raw_retained": true,
+                  "unit": "°C",
+                  "value": 270
+                },
+                "time": {
+                  "label": "炉时间",
+                  "raw_retained": true,
+                  "unit": "s",
+                  "value": 360
+                }
+              },
+              {
+                "mass": {
+                  "label": "局部修订天平原始读数",
+                  "raw_retained": true,
+                  "unit": "mg",
+                  "value": 8.43
+                },
+                "temperature": {
+                  "label": "样品温度",
+                  "raw_retained": true,
+                  "unit": "°C",
+                  "value": 310
+                },
+                "time": {
+                  "label": "炉时间",
+                  "raw_retained": true,
+                  "unit": "s",
+                  "value": 420
+                }
+              },
+              {
+                "mass": {
+                  "label": "天平原始读数",
+                  "raw_retained": true,
+                  "unit": "mg",
+                  "value": 8.2
+                },
+                "temperature": {
+                  "label": "样品温度",
+                  "raw_retained": true,
+                  "unit": "°C",
+                  "value": 350
+                },
+                "time": {
+                  "label": "炉时间",
+                  "raw_retained": true,
+                  "unit": "s",
+                  "value": 480
+                }
+              },
+              {
+                "mass": {
+                  "label": "天平原始读数",
+                  "raw_retained": true,
+                  "unit": "mg",
+                  "value": 8.1
+                },
+                "temperature": {
+                  "label": "样品温度",
+                  "raw_retained": true,
+                  "unit": "°C",
+                  "value": 390
+                },
+                "time": {
+                  "label": "炉时间",
+                  "raw_retained": true,
+                  "unit": "s",
+                  "value": 540
+                }
+              },
+              {
+                "mass": {
+                  "label": "天平原始读数",
+                  "raw_retained": true,
+                  "unit": "mg",
+                  "value": 4.7
+                },
+                "temperature": {
+                  "label": "样品温度",
+                  "raw_retained": true,
+                  "unit": "°C",
+                  "value": 470
+                },
+                "time": {
+                  "label": "炉时间",
+                  "raw_retained": true,
+                  "unit": "s",
+                  "value": 660
+                }
+              },
+              {
+                "mass": {
+                  "label": "天平原始读数",
+                  "raw_retained": true,
+                  "unit": "mg",
+                  "value": 4.6
+                },
+                "temperature": {
+                  "label": "样品温度",
+                  "raw_retained": true,
+                  "unit": "°C",
+                  "value": 510
+                },
+                "time": {
+                  "label": "炉时间",
+                  "raw_retained": true,
+                  "unit": "s",
+                  "value": 720
+                }
+              },
+              {
+                "mass": {
+                  "label": "天平原始读数",
+                  "raw_retained": true,
+                  "unit": "mg",
+                  "value": 4.62
+                },
+                "temperature": {
+                  "label": "样品温度",
+                  "raw_retained": true,
+                  "unit": "°C",
+                  "value": 550
+                },
+                "time": {
+                  "label": "炉时间",
+                  "raw_retained": true,
+                  "unit": "s",
+                  "value": 780
+                }
+              }
+            ]
+          },
+          "content_type": "application/json",
+          "id": "src-raw-samples-v2",
+          "layer": "raw_samples",
+          "parent_id": "src-raw-samples-v1"
+        }
+      ]
+    },
+    "import_half_failure": {
+      "batch_id": "half-failure-format-check-005",
+      "parent_batch": "revision-local-raw-004",
+      "reason": "故意提交未知层和不可覆盖源；整批不得落库",
+      "schema": "tga-source-batch/v1",
+      "sources": [
+        {
+          "content": {
+            "not_allowed": "immutable overwrite attempt"
+          },
+          "content_type": "application/json",
+          "id": "src-gas-events-v1",
+          "layer": "gas_valve_events"
+        },
+        {
+          "content": {
+            "note": "not a TGA source layer"
+          },
+          "content_type": "text/csv",
+          "id": "src-generic-spreadsheet",
+          "layer": "generic_table"
+        }
+      ]
+    },
+    "parameter_adjustment": {
+      "actor": "lead-reviewer",
+      "parameters": {
+        "overlap_strategy": "narrow_only",
+        "peak_threshold": {
+          "label": "调整后的 DTG 峰阈值",
+          "raw_retained": true,
+          "unit": "mg/min",
+          "value": 0.42
+        }
+      },
+      "reason": "审议重叠峰后只保留窄窗口解释"
+    },
+    "decisions": [
+      {
+        "actor": "reviewer-a",
+        "rationale": "重叠峰宽窗口先作为合理解释保留",
+        "step": "accept_broad_shoulder_first",
+        "subject_id": "stage:s02:broad",
+        "verdict": "accepted"
+      },
+      {
+        "actor": "reviewer-b",
+        "rationale": "复核后决定改采窄窗口；系统保留冲突双方",
+        "step": "reject_broad_shoulder_conflict",
+        "subject_id": "stage:s02:broad",
+        "verdict": "rejected"
+      },
+      {
+        "actor": "reviewer-b",
+        "decision_id": "__decision_id_from_previous_step__",
+        "rationale": "撤销冲突解决以回到上一可见结论",
+        "step": "undo_conflicting_rejection",
+        "verdict": "undo"
+      }
+    ]
+  },
+  "machine_assertions": {
+    "local_expiration": "revising one raw point expires only chains containing that point",
+    "required_situations": [
+      "atmosphere_delay",
+      "balance_baseline_drift",
+      "overlapping_peaks",
+      "nonmonotonic_noise",
+      "sampling_gap",
+      "initial_mass_revision",
+      "import_half_failure"
+    ],
+    "rules": [
+      "valve_time_is_not_reaction_time",
+      "stages_may_overlap",
+      "stage_losses_not_forced_to_100_percent",
+      "gaps_do_not_interpolate",
+      "gap_difference_not_a_stage",
+      "nonmonotonic_mass_retained"
+    ],
+    "stable_identity_export_import": "event, source, node and decision IDs are preserved with sequence order"
+  }
+}
