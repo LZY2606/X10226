@@ -1,0 +1,556 @@
+[
+  {
+    "id": "narrative",
+    "title": "失重谱系：TGA 阶段分解、气氛切换与残留物证据链",
+    "narrative": true,
+    "description": "完整叙事：分层导入 -\u003e 参数修订 -\u003e 局部源数据改动 -\u003e 互相冲突的人工决定 -\u003e 时间旅行复核。",
+    "seed": 20260919,
+    "params": {
+      "gas_delay_seconds": 30,
+      "temp_lag_seconds": 45,
+      "peak_window_seconds": 120,
+      "overlap_tol_seconds": 60,
+      "gap_max_seconds": 90
+    },
+    "files": [
+      "baseline/samples.csv",
+      "baseline/drift.csv",
+      "baseline/program.csv",
+      "baseline/gas.csv",
+      "baseline/blank.csv",
+      "baseline/init_mass.csv"
+    ],
+    "triggers": [
+      {
+        "kind": "import",
+        "files": [
+          "baseline/samples.csv",
+          "baseline/drift.csv",
+          "baseline/program.csv",
+          "baseline/gas.csv",
+          "baseline/blank.csv",
+          "baseline/init_mass.csv"
+        ]
+      },
+      {
+        "kind": "judgement",
+        "payload": {
+          "adopted": true,
+          "code": "baseline_stratified",
+          "rule": "六个原始分层各自保存，原始表示不可覆盖"
+        }
+      },
+      {
+        "kind": "revise_params",
+        "params": {
+          "gas_delay_seconds": 40,
+          "temp_lag_seconds": 60,
+          "peak_window_seconds": 120,
+          "overlap_tol_seconds": 60,
+          "gap_max_seconds": 90
+        },
+        "reason": "依据炉段实际传输时间修订气氛延迟与温度滞后"
+      },
+      {
+        "kind": "import",
+        "files": [
+          "drift.csv"
+        ],
+        "reason": "天平基线漂移修订（仅局部依赖）"
+      },
+      {
+        "kind": "judgement",
+        "payload": {
+          "adopted": true,
+          "affected_node_kinds": [
+            "corrected.mass",
+            "dtg",
+            "stages",
+            "residue"
+          ],
+          "code": "local_invalidation",
+          "rule": "漂移改动只使 corrected/dtg/stages/residue 过期，气体窗口不变化",
+          "spared_node_kinds": [
+            "reaction_windows"
+          ]
+        }
+      }
+    ],
+    "judgements": null,
+    "expect": {
+      "unknown_stages": 0,
+      "overlapping": false,
+      "crosses_gap": false,
+      "half_failure": false,
+      "init_revised": false,
+      "non_monotone": false,
+      "stages_sum_free": true,
+      "reaction_after_valve": true
+    }
+  },
+  {
+    "id": "gas_delay",
+    "title": "气氛延迟：阀切换时间 != 样品反应时间",
+    "narrative": false,
+    "description": "",
+    "seed": 101,
+    "params": {
+      "gas_delay_seconds": 30,
+      "temp_lag_seconds": 45,
+      "peak_window_seconds": 120,
+      "overlap_tol_seconds": 60,
+      "gap_max_seconds": 90
+    },
+    "files": [
+      "gas_delay/samples.csv",
+      "gas_delay/drift.csv",
+      "gas_delay/program.csv",
+      "gas_delay/gas.csv",
+      "gas_delay/blank.csv",
+      "gas_delay/init_mass.csv"
+    ],
+    "triggers": [
+      {
+        "kind": "import",
+        "files": [
+          "gas_delay/samples.csv",
+          "gas_delay/drift.csv",
+          "gas_delay/program.csv",
+          "gas_delay/gas.csv",
+          "gas_delay/blank.csv",
+          "gas_delay/init_mass.csv"
+        ]
+      },
+      {
+        "kind": "judgement",
+        "payload": {
+          "adopted": true,
+          "code": "gas_delay_lag",
+          "rule": "反应窗口 = 阀时间 + 气氛延迟 + 温度滞后；阶段可重叠，质量损失不强制总和为100%"
+        }
+      }
+    ],
+    "judgements": [
+      {
+        "code": "gas_delay_lag",
+        "rule": "valve != reaction",
+        "affected_node_kinds": [
+          "reaction_windows",
+          "stages"
+        ],
+        "spared_node_kinds": null,
+        "adopted": true,
+        "detail": ""
+      }
+    ],
+    "expect": {
+      "unknown_stages": 0,
+      "overlapping": false,
+      "crosses_gap": false,
+      "half_failure": false,
+      "init_revised": false,
+      "non_monotone": false,
+      "stages_sum_free": true,
+      "reaction_after_valve": true
+    }
+  },
+  {
+    "id": "drift",
+    "title": "天平基线漂移：影响仅限校正下游",
+    "narrative": false,
+    "description": "",
+    "seed": 102,
+    "params": {
+      "gas_delay_seconds": 30,
+      "temp_lag_seconds": 45,
+      "peak_window_seconds": 120,
+      "overlap_tol_seconds": 60,
+      "gap_max_seconds": 90
+    },
+    "files": [
+      "drift/samples.csv",
+      "drift/drift.csv",
+      "drift/program.csv",
+      "drift/gas.csv",
+      "drift/blank.csv",
+      "drift/init_mass.csv"
+    ],
+    "triggers": [
+      {
+        "kind": "import",
+        "files": [
+          "drift/samples.csv",
+          "drift/drift.csv",
+          "drift/program.csv",
+          "drift/gas.csv",
+          "drift/blank.csv",
+          "drift/init_mass.csv"
+        ]
+      },
+      {
+        "kind": "import",
+        "files": [
+          "drift.csv"
+        ]
+      },
+      {
+        "kind": "judgement",
+        "payload": {
+          "adopted": true,
+          "affected_node_kinds": [
+            "corrected.mass",
+            "dtg",
+            "stages",
+            "residue"
+          ],
+          "code": "drift_local",
+          "spared_node_kinds": [
+            "reaction_windows"
+          ]
+        }
+      }
+    ],
+    "judgements": [
+      {
+        "code": "drift_local",
+        "rule": "local invalidation",
+        "affected_node_kinds": null,
+        "spared_node_kinds": null,
+        "adopted": true,
+        "detail": ""
+      }
+    ],
+    "expect": {
+      "unknown_stages": 0,
+      "overlapping": false,
+      "crosses_gap": false,
+      "half_failure": false,
+      "init_revised": false,
+      "non_monotone": false,
+      "stages_sum_free": false,
+      "reaction_after_valve": false
+    }
+  },
+  {
+    "id": "overlap",
+    "title": "重叠峰：保留全部合法候选",
+    "narrative": false,
+    "description": "",
+    "seed": 103,
+    "params": {
+      "gas_delay_seconds": 30,
+      "temp_lag_seconds": 45,
+      "peak_window_seconds": 120,
+      "overlap_tol_seconds": 60,
+      "gap_max_seconds": 90
+    },
+    "files": [
+      "overlap/samples.csv",
+      "overlap/drift.csv",
+      "overlap/program.csv",
+      "overlap/gas.csv",
+      "overlap/blank.csv",
+      "overlap/init_mass.csv"
+    ],
+    "triggers": [
+      {
+        "kind": "import",
+        "files": [
+          "overlap/samples.csv",
+          "overlap/drift.csv",
+          "overlap/program.csv",
+          "overlap/gas.csv",
+          "overlap/blank.csv",
+          "overlap/init_mass.csv"
+        ]
+      },
+      {
+        "kind": "judgement",
+        "payload": {
+          "adopted": true,
+          "code": "overlap_unknown",
+          "rule": "重叠峰分解不唯一时保留全部合法候选，阶段可重叠且不强制总和为100%"
+        }
+      }
+    ],
+    "judgements": [
+      {
+        "code": "overlap_unknown",
+        "rule": "ambiguous candidates",
+        "affected_node_kinds": null,
+        "spared_node_kinds": null,
+        "adopted": true,
+        "detail": ""
+      }
+    ],
+    "expect": {
+      "unknown_stages": 1,
+      "overlapping": true,
+      "crosses_gap": false,
+      "half_failure": false,
+      "init_revised": false,
+      "non_monotone": false,
+      "stages_sum_free": true,
+      "reaction_after_valve": false
+    }
+  },
+  {
+    "id": "nonmonotone",
+    "title": "非单调噪声：不作为质量增加",
+    "narrative": false,
+    "description": "",
+    "seed": 104,
+    "params": {
+      "gas_delay_seconds": 30,
+      "temp_lag_seconds": 45,
+      "peak_window_seconds": 120,
+      "overlap_tol_seconds": 60,
+      "gap_max_seconds": 90
+    },
+    "files": [
+      "nonmonotone/samples.csv",
+      "nonmonotone/drift.csv",
+      "nonmonotone/program.csv",
+      "nonmonotone/gas.csv",
+      "nonmonotone/blank.csv",
+      "nonmonotone/init_mass.csv"
+    ],
+    "triggers": [
+      {
+        "kind": "import",
+        "files": [
+          "nonmonotone/samples.csv",
+          "nonmonotone/drift.csv",
+          "nonmonotone/program.csv",
+          "nonmonotone/gas.csv",
+          "nonmonotone/blank.csv",
+          "nonmonotone/init_mass.csv"
+        ]
+      },
+      {
+        "kind": "judgement",
+        "payload": {
+          "adopted": true,
+          "code": "non_monotone",
+          "rule": "质量上冲被标记为噪声并按单调包络处理，保留原始证据"
+        }
+      }
+    ],
+    "judgements": [
+      {
+        "code": "non_monotone",
+        "rule": "noise evidence",
+        "affected_node_kinds": null,
+        "spared_node_kinds": null,
+        "adopted": true,
+        "detail": ""
+      }
+    ],
+    "expect": {
+      "unknown_stages": 0,
+      "overlapping": false,
+      "crosses_gap": false,
+      "half_failure": false,
+      "init_revised": false,
+      "non_monotone": true,
+      "stages_sum_free": false,
+      "reaction_after_valve": false
+    }
+  },
+  {
+    "id": "gap",
+    "title": "采样缺口：不跨越插值",
+    "narrative": false,
+    "description": "",
+    "seed": 105,
+    "params": {
+      "gas_delay_seconds": 30,
+      "temp_lag_seconds": 45,
+      "peak_window_seconds": 120,
+      "overlap_tol_seconds": 60,
+      "gap_max_seconds": 90
+    },
+    "files": [
+      "gap/samples.csv",
+      "gap/drift.csv",
+      "gap/program.csv",
+      "gap/gas.csv",
+      "gap/blank.csv",
+      "gap/init_mass.csv"
+    ],
+    "triggers": [
+      {
+        "kind": "import",
+        "files": [
+          "gap/samples.csv",
+          "gap/drift.csv",
+          "gap/program.csv",
+          "gap/gas.csv",
+          "gap/blank.csv",
+          "gap/init_mass.csv"
+        ]
+      },
+      {
+        "kind": "judgement",
+        "payload": {
+          "adopted": true,
+          "code": "gap_no_interp",
+          "rule": "缺口两侧不插值；跨缺口阶段保持 unknown 与全部合法边界候选"
+        }
+      }
+    ],
+    "judgements": [
+      {
+        "code": "gap_no_interp",
+        "rule": "no interpolation across gaps",
+        "affected_node_kinds": null,
+        "spared_node_kinds": null,
+        "adopted": true,
+        "detail": ""
+      }
+    ],
+    "expect": {
+      "unknown_stages": 1,
+      "overlapping": false,
+      "crosses_gap": true,
+      "half_failure": false,
+      "init_revised": false,
+      "non_monotone": false,
+      "stages_sum_free": false,
+      "reaction_after_valve": false
+    }
+  },
+  {
+    "id": "initrev",
+    "title": "初重修订：新版本与父版本",
+    "narrative": false,
+    "description": "",
+    "seed": 106,
+    "params": {
+      "gas_delay_seconds": 30,
+      "temp_lag_seconds": 45,
+      "peak_window_seconds": 120,
+      "overlap_tol_seconds": 60,
+      "gap_max_seconds": 90
+    },
+    "files": [
+      "initrev/samples.csv",
+      "initrev/drift.csv",
+      "initrev/program.csv",
+      "initrev/gas.csv",
+      "initrev/blank.csv",
+      "initrev/init_mass.csv"
+    ],
+    "triggers": [
+      {
+        "kind": "import",
+        "files": [
+          "initrev_base/samples.csv",
+          "initrev_base/drift.csv",
+          "initrev_base/program.csv",
+          "initrev_base/gas.csv",
+          "initrev_base/blank.csv",
+          "initrev_base/init_mass.csv"
+        ]
+      },
+      {
+        "kind": "import",
+        "files": [
+          "init_mass.csv"
+        ],
+        "reason": "样品初重分层修订"
+      },
+      {
+        "kind": "judgement",
+        "payload": {
+          "adopted": true,
+          "code": "init_revision",
+          "rule": "初重以新版本+父版本表达，残留率随之重算，原始初重仍可审计"
+        }
+      }
+    ],
+    "judgements": [
+      {
+        "code": "init_revision",
+        "rule": "versioned revision",
+        "affected_node_kinds": null,
+        "spared_node_kinds": null,
+        "adopted": true,
+        "detail": ""
+      }
+    ],
+    "expect": {
+      "unknown_stages": 0,
+      "overlapping": false,
+      "crosses_gap": false,
+      "half_failure": false,
+      "init_revised": true,
+      "non_monotone": false,
+      "stages_sum_free": false,
+      "reaction_after_valve": false
+    }
+  },
+  {
+    "id": "halffail",
+    "title": "导入半失败：拒绝分层被保留",
+    "narrative": false,
+    "description": "",
+    "seed": 107,
+    "params": {
+      "gas_delay_seconds": 30,
+      "temp_lag_seconds": 45,
+      "peak_window_seconds": 120,
+      "overlap_tol_seconds": 60,
+      "gap_max_seconds": 90
+    },
+    "files": [
+      "halffail/samples.csv",
+      "halffail/drift.csv",
+      "halffail/program.csv",
+      "halffail/gas.csv",
+      "halffail/blank.csv",
+      "halffail/init_mass.csv"
+    ],
+    "triggers": [
+      {
+        "kind": "import",
+        "files": [
+          "halffail/samples.csv",
+          "halffail/drift.csv",
+          "halffail/program.csv",
+          "halffail/gas.csv",
+          "halffail/blank.csv",
+          "halffail/init_mass.csv"
+        ]
+      },
+      {
+        "kind": "judgement",
+        "payload": {
+          "adopted": true,
+          "code": "half_failure",
+          "rule": "格式错误的分层被拒绝并保留，其他分层照常派生，错误值留在原位置附诊断"
+        }
+      }
+    ],
+    "judgements": [
+      {
+        "code": "half_failure",
+        "rule": "partial batch preserved",
+        "affected_node_kinds": null,
+        "spared_node_kinds": null,
+        "adopted": true,
+        "detail": ""
+      }
+    ],
+    "expect": {
+      "unknown_stages": 0,
+      "overlapping": false,
+      "crosses_gap": false,
+      "half_failure": true,
+      "init_revised": false,
+      "non_monotone": false,
+      "stages_sum_free": false,
+      "reaction_after_valve": false
+    }
+  }
+]
