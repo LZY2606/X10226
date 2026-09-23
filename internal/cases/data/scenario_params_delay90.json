@@ -1,0 +1,2 @@
+{"name":"atmo_delay_90","rationale":"revisited transfer line length","params":{
+"atmo_delay_s":{"O2":90,"N2":0},"temp_lag_s":30,"dtg_smooth_window":5,"dtg_threshold_percent_min":0.6,"overlap_split":true}}

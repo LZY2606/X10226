@@ -1,0 +1,5 @@
+from_c,to_c,rate_k_per_min,duration_s,gas,kind
+30,150,20,360,N2,ramp
+150,150,0,420,N2,hold
+150,500,10,2100,N2,ramp
+500,500,0,420,O2,hold

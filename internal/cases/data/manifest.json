@@ -1,0 +1,23 @@
+{
+  "atmo_delay_o2_s": 45,
+  "components_mg": {
+    "decomp_a": 1.2,
+    "decomp_b": 1,
+    "moisture": 0.2,
+    "oxidation": 1.8,
+    "residue": 5.8
+  },
+  "gap_s": [
+    1700,
+    1820
+  ],
+  "horizon_s": 3300,
+  "sample_period_s": 2,
+  "seed": 20260919,
+  "spike_t_s": [
+    1240,
+    2100
+  ],
+  "temp_lag_s": 30,
+  "valve_o2_t_s": 2880
+}
