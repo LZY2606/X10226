@@ -1,0 +1,11 @@
+# TGA review system
+- [x] go module + sqlite driver
+- [ ] domain types (measures, docs, events)
+- [ ] store: schema, event append/replay, projections, export/import, hash chain
+- [ ] ingest: bundle/CSV, partial failure, layered versions
+- [ ] derive: corrected series, DTG, stages/overlap, residue chains, atmos markers
+- [ ] casepack: embedded baseline + 7 mutations + script + assertions, generator
+- [ ] app: state machine, decisions/conflict/undo, time-travel, stale tracking
+- [ ] web: HTTP API + SVG charts + review UI
+- [ ] tests: store/ingest/derive/app/http/casepack (seed/tempdir/fake clock)
+- [ ] build + full test + demo run check + README
