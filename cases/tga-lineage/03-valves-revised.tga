@@ -1,0 +1,5 @@
+# tgasys offline bundle v1
+@gas_valves
+time_min,gas,action
+0,N2,open
+48,air,switch
